@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOKO DEGBO FÉLICIANO CAMILLE — Graphic Designer, Video Editor & AI Motion Creator</title>
+    
+    <!-- Favicon personnalisé avec le Logo LOKO DEGBO Néon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2308090d'/><path d='M25 25 L50 75 L75 25' stroke='%2300f0ff' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/><circle cx='50' cy='35' r='6' fill='%2300f0ff'/></svg>">
+    
+    <!-- Google Fonts : Outfit, Space Grotesk, Plus Jakarta Sans, Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#08090d',
+                        cardBg: 'rgba(16, 18, 27, 0.75)',
+                        cardBorder: 'rgba(255, 255, 255, 0.09)',
+                        accent: '#00f0ff',
+                        accentDark: '#00a8cc',
+                        accentGlow: 'rgba(0, 240, 255, 0.25)',
+                        offWhite: '#f1f3f7',
+                        muted: '#8f96a3'
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        space: ['Space Grotesk', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #08090d;
+            color: #f1f3f7;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Curseur personnalisé ultra-fluide */
+        .custom-cursor {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: rgba(0, 240, 255, 0.4);
+            border: 1px solid #00f0ff;
+            transform: translate(-50%, -50%);
+            transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.25s ease, height 0.25s ease, background-color 0.25s ease;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 800;
+            color: #08090d;
+            letter-spacing: 1px;
+            backdrop-filter: blur(4px);
+        }
+
+        .custom-cursor.hover-project {
+            width: 75px;
+            height: 75px;
+            background-color: #00f0ff;
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.7);
+            border: none;
+        }
+
+        .custom-cursor.hover-link {
+            width: 42px;
+            height: 42px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: #ffffff;
+        }
+
+        /* Background Hero Slideshow */
+        .bg-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 6s ease-out;
+            transform: scale(1);
+        }
+
+        .bg-slide.active {
+            opacity: 0.35;
+            transform: scale(1.05);
+        }
+
+        /* Cartes effet verre dépoli */
+        .glass-card {
+            background: rgba(16, 18, 27, 0.7);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 240, 255, 0.45);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(0, 240, 255, 0.18);
+        }
+
+        /* Effet gradient de texte */
+        .text-accent-gradient {
+            background: linear-gradient(135deg, #00f0ff 0%, #0088ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scroll Reveal Effect */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scrollbar moderne */
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08090d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1c202d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }
+    </style>
+</head>
+<body class="relative selection:bg-accent selection:text-darkBg">
+
+    <!-- Curseur Personnalisé -->
+    <div id="cursor" class="custom-cursor hidden md:flex"></div>
+
+    <!-- Navigation Header -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto flex justify-between items-center bg-cardBg/80 backdrop-blur-xl px-6 py-3.5 rounded-full border border-cardBorder">
+            
+            <!-- Logo Officiel Personnalisé -->
+            <a href="#" class="flex items-center gap-3 cursor-pointer hover-link">
+                <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/40 flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(0,240,255,0.3)]">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <path d="M20 20 L50 80 L80 20" stroke="#00f0ff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <circle cx="50" cy="32" r="7" fill="#00f0ff"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-outfit text-lg font-extrabold tracking-tight text-white leading-none">
+                        LOKO<span class="text-accent">DEGBO</span>
+                    </span>
+                    <span class="font-space text-[9px] text-muted tracking-widest uppercase mt-0.5">STUDIO CREATIVE</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links (Desktop) -->
+            <div class="hidden lg:flex items-center space-x-8 text-xs font-space font-semibold tracking-widest text-muted uppercase">
+                <a href="#projets" class="hover:text-accent transition-colors hover-link">PROJETS</a>
+                <a href="#services" class="hover:text-accent transition-colors hover-link">SERVICES</a>
+                <a href="#process" class="hover:text-accent transition-colors hover-link">PROCESSUS</a>
+                <a href="#competences" class="hover:text-accent transition-colors hover-link">COMPÉTENCES</a>
+                <a href="#about" class="hover:text-accent transition-colors hover-link">À PROPOS</a>
+            </div>
+
+            <!-- Header CTA -->
+            <div class="hidden sm:flex items-center gap-4">
+                <div class="hidden xl:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[11px] font-space font-medium">
+                    <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
+                    <span>Disponible Freelance / Remote</span>
+                </div>
+                <a href="#contact" class="px-5 py-2.5 text-xs font-space font-extrabold uppercase tracking-wider text-darkBg bg-accent rounded-full hover:bg-white hover:shadow-[0_0_20px_rgba(0,240,255,0.8)] transition-all hover-link">
+                    ME CONTACTER
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger -->
+            <button id="menu-btn" class="lg:hidden text-white p-2 hover-link">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden max-w-7xl mx-auto mt-3 bg-cardBg/95 backdrop-blur-2xl rounded-3xl p-6 border border-cardBorder flex flex-col gap-4 text-center">
+            <a href="#projets" class="mobile-link text-offWhite hover:text-accent py-2 text-base font-space font-bold">PROJETS</a>
+            <a href="#services" class="mobile-link text-offWhite hover:text-accent py-2 text-base font-space font-bold">SERVICES</a>
+            <a href="#process" class="mobile-link text-offWhite hover:text-accent py-2 text-base font-space font-bold">PROCESSUS</a>
+            <a href="#competences" class="mobile-link text-offWhite hover:text-accent py-2 text-base font-space font-bold">COMPÉTENCES</a>
+            <a href="#about" class="mobile-link text-offWhite hover:text-accent py-2 text-base font-space font-bold">À PROPOS</a>
+            <a href="#contact" class="mobile-link inline-block px-6 py-3 text-xs font-space font-extrabold uppercase tracking-wider text-darkBg bg-accent rounded-full mt-2">ME CONTACTER</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section avec Carrousel 5s & Portrait -->
+    <section class="min-h-screen pt-36 pb-20 px-6 flex items-center justify-center relative overflow-hidden">
+        
+        <!-- Carrousel d'arrière-plan 5 images en fondu enchaîné (Changement toutes les 5 secondes) -->
+        <div id="hero-slideshow" class="absolute inset-0 pointer-events-none z-0">
+            <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1920&q=80');"></div>
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/80 to-darkBg/60"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            
+            <!-- Hero Left Text Content -->
+            <div class="lg:col-span-7 flex flex-col items-start">
+                
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cardBg border border-cardBorder text-accent text-xs font-space uppercase tracking-widest mb-6">
+                    <i class="fa-solid fa-sparkles text-accent"></i> Design · Montage Vidéo · Motion · IA
+                </div>
+
+                <h1 class="font-outfit text-4xl sm:text-6xl md:text-7xl font-black tracking-tight uppercase leading-[1.02] mb-6">
+                    <span class="block text-white">LOKO DEGBO</span>
+                    <span class="block text-accent-gradient">FÉLICIANO CAMILLE</span>
+                </h1>
+
+                <!-- Dynamic Role Changer -->
+                <div class="h-10 overflow-hidden mb-6 flex items-center">
+                    <span class="text-muted font-space text-xs uppercase tracking-widest mr-3">// RÔLE :</span>
+                    <div id="role-rotator" class="font-space text-xl sm:text-2xl text-accent font-bold tracking-wider transition-all duration-500">
+                        GRAPHIC DESIGNER
+                    </div>
+                </div>
+
+                <p class="text-muted text-base sm:text-xl max-w-2xl font-light mb-10 leading-relaxed">
+                    Je <span class="font-serif italic text-white font-semibold text-2xl">transforme les idées</span> en expériences visuelles percutantes et modernes pour marques, créateurs et entreprises.
+                </p>
+
+                <div class="flex flex-wrap gap-4 items-center">
+                    <a href="#projets" class="px-8 py-4 bg-accent text-darkBg font-space font-extrabold text-xs tracking-wider uppercase rounded-full hover:bg-white hover:shadow-[0_0_25px_rgba(0,240,255,0.7)] transition-all hover-link flex items-center gap-3">
+                        <span>VOIR MES PROJETS</span>
+                        <i class="fa-solid fa-arrow-down text-sm"></i>
+                    </a>
+                    <a href="https://wa.me/2290169500371" target="_blank" rel="noopener" class="px-8 py-4 bg-cardBg border border-cardBorder text-offWhite font-space font-extrabold text-xs tracking-wider uppercase rounded-full hover:border-accent hover:text-accent transition-all hover-link flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-base text-accent"></i>
+                        <span>CONTACT DIRECT</span>
+                    </a>
+                </div>
+
+                <div class="mt-12 flex items-center gap-6 text-xs text-muted font-space uppercase tracking-widest border-t border-cardBorder/60 pt-6 w-full">
+                    <span><i class="fa-solid fa-location-dot text-accent mr-1.5"></i> Cotonou, Bénin</span>
+                    <span><i class="fa-solid fa-globe text-accent mr-1.5"></i> Remote Worldwide</span>
+                </div>
+            </div>
+
+            <!-- Hero Right Portrait Frame -->
+            <div class="lg:col-span-5 relative">
+                <div class="glass-card p-4 rounded-3xl relative overflow-hidden group">
+                    <div class="relative aspect-[4/5] rounded-2xl overflow-hidden bg-cardBg border border-cardBorder flex items-center justify-center">
+                        <img src="Gemini_Generated_Image_r81kfqr81kfqr81k.jfif" alt="LOKO DEGBO FÉLICIANO CAMILLE Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+                        
+                        <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-cardBg/90 backdrop-blur-md border border-cardBorder flex justify-between items-center">
+                            <div>
+                                <p class="text-[10px] font-space text-accent uppercase tracking-widest">CRÉATEUR MULTIDISCIPLINAIRE</p>
+                                <p class="text-sm font-outfit font-bold text-white">LOKO DEGBO F. C.</p>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-accent/20 border border-accent/50 flex items-center justify-center text-accent">
+                                <i class="fa-solid fa-check text-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="py-12 px-6 relative z-10 border-y border-cardBorder/40 bg-cardBg/30">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div class="reveal text-center lg:text-left border-r border-cardBorder/40 last:border-none pr-4">
+                <div class="flex items-center justify-center lg:justify-start">
+                    <span class="counter font-outfit text-4xl sm:text-5xl font-extrabold text-white" data-target="500">0</span>
+                    <span class="font-outfit text-4xl sm:text-5xl font-extrabold text-accent">+</span>
+                </div>
+                <p class="text-xs font-space text-muted uppercase tracking-wider mt-2">Clients Accompagnés</p>
+            </div>
+
+            <div class="reveal text-center lg:text-left border-r border-cardBorder/40 last:border-none pr-4">
+                <div class="flex items-center justify-center lg:justify-start">
+                    <span class="counter font-outfit text-4xl sm:text-5xl font-extrabold text-white" data-target="300">0</span>
+                    <span class="font-outfit text-4xl sm:text-5xl font-extrabold text-accent">K+</span>
+                </div>
+                <p class="text-xs font-space text-muted uppercase tracking-wider mt-2">Vues YouTube Générées</p>
+            </div>
+
+            <div class="reveal text-center lg:text-left border-r border-cardBorder/40 last:border-none pr-4">
+                <div class="flex items-center justify-center lg:justify-start">
+                    <span class="counter font-outfit text-4xl sm:text-5xl font-extrabold text-white" data-target="20">0</span>
+                    <span class="font-outfit text-4xl sm:text-5xl font-extrabold text-accent">K+</span>
+                </div>
+                <p class="text-xs font-space text-muted uppercase tracking-wider mt-2">Vues Moyennes / Vidéo</p>
+            </div>
+
+            <div class="reveal text-center lg:text-left">
+                <div class="flex items-center justify-center lg:justify-start">
+                    <span class="font-outfit text-4xl sm:text-5xl font-extrabold text-white">100</span>
+                    <span class="font-outfit text-4xl sm:text-5xl font-extrabold text-accent">%</span>
+                </div>
+                <p class="text-xs font-space text-muted uppercase tracking-wider mt-2">Satisfaction & Livraisons</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Selected Work / Galerie -->
+    <section id="projets" class="py-28 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 reveal">
+                <div>
+                    <span class="text-accent font-space text-xs tracking-widest uppercase mb-2 block">// PORTFOLIO SÉLECTIONNÉ</span>
+                    <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold text-white tracking-tight">SELECTED WORK</h2>
+                </div>
+                <p class="text-muted max-w-md text-sm mt-4 md:mt-0 font-light">
+                    Une sélection de projets en design graphique, montage vidéo, motion design et création assistée par IA.
+                </p>
+            </div>
+
+            <!-- Filtres de Catégories -->
+            <div class="flex flex-wrap gap-2 sm:gap-3 mb-12 reveal">
+                <button class="filter-btn active px-6 py-2.5 rounded-full text-xs font-space font-extrabold uppercase tracking-wider bg-accent text-darkBg transition-all hover-link" data-filter="all">TOUT</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full text-xs font-space font-extrabold uppercase tracking-wider bg-cardBg text-muted border border-cardBorder hover:text-white hover:border-accent transition-all hover-link" data-filter="graphic">GRAPHIC DESIGN</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full text-xs font-space font-extrabold uppercase tracking-wider bg-cardBg text-muted border border-cardBorder hover:text-white hover:border-accent transition-all hover-link" data-filter="video">MONTAGE VIDÉO</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full text-xs font-space font-extrabold uppercase tracking-wider bg-cardBg text-muted border border-cardBorder hover:text-white hover:border-accent transition-all hover-link" data-filter="motion">MOTION DESIGN</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full text-xs font-space font-extrabold uppercase tracking-wider bg-cardBg text-muted border border-cardBorder hover:text-white hover:border-accent transition-all hover-link" data-filter="ai">CRÉATION IA</button>
+            </div>
+
+            <!-- Grille des Cartes Projets -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projects-grid">
+                
+                <!-- Projet 1 : Fortune Optique -->
+                <div class="project-card graphic glass-card rounded-3xl overflow-hidden group cursor-pointer hover-project reveal" onclick="openProjectDetails('fortune')">
+                    <div class="relative aspect-[16/10] overflow-hidden bg-cardBg">
+                        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=1000&q=80" alt="Fortune Optique" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/20 to-transparent opacity-80"></div>
+                        <div class="absolute top-4 right-4 bg-darkBg/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-space text-accent border border-accent/30 uppercase">
+                            Brand Identity / Graphic
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <span class="text-xs font-space text-muted uppercase tracking-widest mb-1 block">Projet 01</span>
+                        <h3 class="font-outfit text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">Fortune Optique</h3>
+                        <p class="text-muted text-sm font-light line-clamp-2">
+                            Création d'une identité visuelle et de supports de communication destinés à renforcer la présence digitale de la marque.
+                        </p>
+                        <div class="mt-6 flex flex-wrap gap-2 text-[11px] font-space text-offWhite/70">
+                            <span class="px-2.5 py-1 rounded-md bg-cardBorder/60">Logo Design</span>
+                            <span class="px-2.5 py-1 rounded-md bg-cardBorder/60">Identité Graphique</span>
+                            <span class="px-2.5 py-1 rounded-md bg-cardBorder/60">Flyers & Social</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 2 : YouTube Content Creation -->
+                <div class="project-card video glass-card rounded-3xl overflow-hidden group cursor-pointer hover-project reveal" onclick="openProjectDetails('youtube')">
+                    <div class="relative aspect-[16/10] overflow-hidden bg-cardBg">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1000&q=80" alt="YouTube Content Strategy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/20 to-transparent opacity-80"></div>
+                        <div class="absolute top-4 right-4 bg-red-600/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-space text-white border border-red-400/30 uppercase">
+                            300K+ VUES GÉNÉRÉES
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <span class="text-xs font-space text-muted uppercase tracking-widest mb-1 block">Projet 02</span>
+                        <h3 class="font-outfit text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">YouTube Strategy & Editing</h3>
+                        <p class="text-muted text-sm font-light line-clamp-2">
+                            Montage vidéo dynamique axé sur la rétention d'audience, miniatures optimisées et storytelling engageant.
+                        </p>
+                        <div class="mt-6 flex flex-wrap gap-2 text-[11px] font-space text-offWhite/70">
+                            <span class="px-2.5 py-1 rounded-md bg-cardBorder/60">Montage Rétention</span>
+                            <span class="px-2.5 py-1 rounded-md bg-cardBorder/60">Sound Design</span>
+                            <span class="px-2.5 py-1 rounded-md bg-cardBorder/60">Captions Animées</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 3 : Motion Graphics & Animation -->
+                <div class="project-card motion glass-card rounded-3xl overflow-hidden group cursor-pointer hover-project reveal" onclick="openProjectDetails('motion')">
+                    <div class="relative aspect-[16/10] overflow-hidden bg-cardBg">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=80" alt="Kinetic Typography" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/20 to-transparent opacity-80"></div>
+                        <div class="absolute top-4 right-4 bg-darkBg/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-space text-accent border border-accent/30 uppercase">
+                            Motion Design 2D
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <span class="text-xs font-space text-muted uppercase tracking-widest mb-1 block">Projet 03</span>
+                        <h3 class="font-outfit text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">Kinetic Typography & Logo Motion</h3>
+                        <p class="text-muted text-sm font-light line-clamp-2">
+                            Animations de texte dynamiques, transitions After Effects fluides et révélation de logos pour vidéos de marque.
+                        </p>
+                        <div class="mt-6 flex flex-wrap gap-2 text-[11px] font-space text-offWhite/70">
+                            <span class="px-2.5 py-1 rounded-md bg-cardBorder/60">After Effects</span>
+                            <span class="px-2.5 py-1 rounded-md bg-cardBorder/60">Kinetic Typography</span>
+                            <span class="px-2.5 py-1 rounded-md bg-cardBorder/60">Logo Animation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 4 : AI Creative Concepts -->
+                <div class="project-card ai glass-card rounded-3xl overflow-hidden group cursor-pointer hover-project reveal" onclick="openProjectDetails('ai')">
+                    <div class="relative aspect-[16/10] overflow-hidden bg-cardBg">
+                        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=1000&q=80" alt="AI Generated Campaign" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/20 to-transparent opacity-80"></div>
+                        <div class="absolute top-4 right-4 bg-darkBg/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-space text-accent border border-accent/30 uppercase">
+                            AI Creative Tech
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <span class="text-xs font-space text-muted uppercase tracking-widest mb-1 block">Projet 04</span>
+                        <h3 class="font-outfit text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">AI Concept, Image & Voice Generation</h3>
+                        <p class="text-muted text-sm font-light line-clamp-2">
+                            Création visuelle et production de contenus intégrant les technologies génératives IA (Midjourney, Runway, ElevenLabs).
+                        </p>
+                        <div class="mt-6 flex flex-wrap gap-2 text-[11px] font-space text-offWhite/70">
+                            <span class="px-2.5 py-1 rounded-md bg-cardBorder/60">Midjourney v6</span>
+                            <span class="px-2.5 py-1 rounded-md bg-cardBorder/60">Runway Gen-3</span>
+                            <span class="px-2.5 py-1 rounded-md bg-cardBorder/60">ElevenLabs Voice</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Processus Créatif -->
+    <section id="process" class="py-28 px-6 relative z-10 border-t border-cardBorder/40 bg-cardBg/20">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="reveal mb-16 text-center max-w-2xl mx-auto">
+                <span class="text-accent font-space text-xs tracking-widest uppercase mb-2 block">// DÉMARCHE D'EXCELLENCE</span>
+                <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold text-white tracking-tight">MY CREATIVE PROCESS</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 reveal">
+                
+                <div class="glass-card p-6 rounded-3xl relative flex flex-col justify-between">
+                    <span class="font-outfit text-4xl font-extrabold text-accent mb-6">01</span>
+                    <div>
+                        <h3 class="font-outfit font-bold text-white text-lg mb-2">DISCOVER</h3>
+                        <p class="text-xs text-muted font-light leading-relaxed">Comprendre le besoin, analyser le public cible et définir les objectifs stratégiques.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl relative flex flex-col justify-between">
+                    <span class="font-outfit text-4xl font-extrabold text-accent mb-6">02</span>
+                    <div>
+                        <h3 class="font-outfit font-bold text-white text-lg mb-2">CONCEPT</h3>
+                        <p class="text-xs text-muted font-light leading-relaxed">Définir l'idée visuelle, le storyboard et la direction artistique globale.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl relative flex flex-col justify-between">
+                    <span class="font-outfit text-4xl font-extrabold text-accent mb-6">03</span>
+                    <div>
+                        <h3 class="font-outfit font-bold text-white text-lg mb-2">CREATE</h3>
+                        <p class="text-xs text-muted font-light leading-relaxed">Design graphique, montage vidéo, animation Motion et génération IA.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl relative flex flex-col justify-between">
+                    <span class="font-outfit text-4xl font-extrabold text-accent mb-6">04</span>
+                    <div>
+                        <h3 class="font-outfit font-bold text-white text-lg mb-2">REFINE</h3>
+                        <p class="text-xs text-muted font-light leading-relaxed">Ajustements minutieux, correction couleur, sound design et retouches.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl relative flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+                    <span class="font-outfit text-4xl font-extrabold text-accent mb-6">05</span>
+                    <div>
+                        <h3 class="font-outfit font-bold text-white text-lg mb-2">DELIVER</h3>
+                        <p class="text-xs text-muted font-light leading-relaxed">Livraison finale des fichiers exportés aux formats requis de haute qualité.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section Compétences -->
+    <section id="competences" class="py-28 px-6 relative z-10 border-t border-cardBorder/40">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="reveal mb-16">
+                <span class="text-accent font-space text-xs tracking-widest uppercase mb-2 block">// MAÎTRISE TECHNIQUE</span>
+                <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold text-white tracking-tight">COMPÉTENCES & OUTILS</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+                
+                <div class="glass-card p-8 rounded-3xl border-l-4 border-l-accent">
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center text-accent text-xl mb-6">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <h3 class="font-outfit text-xl font-bold text-white mb-4 uppercase">DESIGN</h3>
+                    <ul class="space-y-3 text-sm text-offWhite font-light">
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Photoshop</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Illustrator</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Canva</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Figma</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> CorelDRAW</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl border-l-4 border-l-accent">
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center text-accent text-xl mb-6">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <h3 class="font-outfit text-xl font-bold text-white mb-4 uppercase">VIDEO</h3>
+                    <ul class="space-y-3 text-sm text-offWhite font-light">
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Premiere Pro</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> DaVinci Resolve</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Final Cut Pro</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> CapCut Pro</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Filmora</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl border-l-4 border-l-accent">
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center text-accent text-xl mb-6">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="font-outfit text-xl font-bold text-white mb-4 uppercase">MOTION</h3>
+                    <ul class="space-y-3 text-sm text-offWhite font-light">
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> After Effects</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Motion Graphics</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Kinetic Typography</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> 2D Animation</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl border-l-4 border-l-accent">
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center text-accent text-xl mb-6">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h3 class="font-outfit text-xl font-bold text-white mb-4 uppercase">AI CREATIVE</h3>
+                    <ul class="space-y-3 text-sm text-offWhite font-light">
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Midjourney / Leonardo</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Runway / Kling / Veo</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> ElevenLabs Voice</li>
+                        <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> ChatGPT & Gemini</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-28 px-6 relative z-10 border-t border-cardBorder/40 bg-cardBg/20">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="reveal mb-16">
+                <span class="text-accent font-space text-xs tracking-widest uppercase mb-2 block">// DOMAINES D'EXPERTISE</span>
+                <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold text-white tracking-tight">WHAT I DO</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="glass-card p-8 rounded-3xl reveal group">
+                    <span class="font-outfit text-4xl font-extrabold text-accent/40 group-hover:text-accent transition-colors block mb-4">01</span>
+                    <h3 class="font-outfit text-2xl font-bold text-white mb-4">GRAPHIC DESIGN</h3>
+                    <p class="text-muted text-sm font-light leading-relaxed mb-6">
+                        Logo Design, Branding, Social Media Design, Advertising & Identité visuelle moderne pour renforcer la présence de votre marque.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-space text-accent">
+                        <span class="px-3 py-1 rounded-full bg-accent/10 border border-accent/20">Logo Design</span>
+                        <span class="px-3 py-1 rounded-full bg-accent/10 border border-accent/20">Branding</span>
+                        <span class="px-3 py-1 rounded-full bg-accent/10 border border-accent/20">Social Media</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl reveal group">
+                    <span class="font-outfit text-4xl font-extrabold text-accent/40 group-hover:text-accent transition-colors block mb-4">02</span>
+                    <h3 class="font-outfit text-2xl font-bold text-white mb-4">VIDEO EDITING</h3>
+                    <p class="text-muted text-sm font-light leading-relaxed mb-6">
+                        Short-form, Long-form, YouTube, Reels, TikTok et Video Ads conçus pour captiver l'attention dès les premières secondes.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-space text-accent">
+                        <span class="px-3 py-1 rounded-full bg-accent/10 border border-accent/20">Short-Form</span>
+                        <span class="px-3 py-1 rounded-full bg-accent/10 border border-accent/20">YouTube</span>
+                        <span class="px-3 py-1 rounded-full bg-accent/10 border border-accent/20">Reels & TikTok</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl reveal group">
+                    <span class="font-outfit text-4xl font-extrabold text-accent/40 group-hover:text-accent transition-colors block mb-4">03</span>
+                    <h3 class="font-outfit text-2xl font-bold text-white mb-4">MOTION DESIGN</h3>
+                    <p class="text-muted text-sm font-light leading-relaxed mb-6">
+                        Motion Graphics, Kinetic Typography, Logo Animation et Effets Visuels (VFX) pour dynamiser vos contenus vidéo.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-space text-accent">
+                        <span class="px-3 py-1 rounded-full bg-accent/10 border border-accent/20">Kinetic Text</span>
+                        <span class="px-3 py-1 rounded-full bg-accent/10 border border-accent/20">Logo Animation</span>
+                        <span class="px-3 py-1 rounded-full bg-accent/10 border border-accent/20">Visual Effects</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl reveal group">
+                    <span class="font-outfit text-4xl font-extrabold text-accent/40 group-hover:text-accent transition-colors block mb-4">04</span>
+                    <h3 class="font-outfit text-2xl font-bold text-white mb-4">AI CREATIVE</h3>
+                    <p class="text-muted text-sm font-light leading-relaxed mb-6">
+                        Génération d'images IA, animations vidéos génératives, voix off synthétiques et workflows créatifs optimisés.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-space text-accent">
+                        <span class="px-3 py-1 rounded-full bg-accent/10 border border-accent/20">AI Images</span>
+                        <span class="px-3 py-1 rounded-full bg-accent/10 border border-accent/20">AI Videos</span>
+                        <span class="px-3 py-1 rounded-full bg-accent/10 border border-accent/20">AI Voice</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-28 px-6 relative z-10 border-t border-cardBorder/40">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <div class="lg:col-span-7 reveal">
+                    <span class="text-accent font-space text-xs tracking-widest uppercase mb-2 block">// BIOGRAPHIE & PARCOURS</span>
+                    <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6">ABOUT ME</h2>
+                    <p class="text-offWhite text-lg leading-relaxed font-light mb-6">
+                        Je suis <strong class="text-white font-bold">LOKO DEGBO FÉLICIANO CAMILLE</strong>, Graphic Designer, Video Editor et créateur spécialisé en AI & Motion Design.
+                    </p>
+                    <p class="text-muted text-base leading-relaxed font-light mb-8">
+                        Avec plusieurs années d'expérience, j'accompagne entreprises, marques et particuliers dans la création d'identités visuelles, de contenus vidéo et de créations digitales modernes.
+                    </p>
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-l-accent mb-8">
+                        <span class="text-xs font-space text-accent uppercase tracking-widest">2022 — PRESENT</span>
+                        <h4 class="font-outfit font-bold text-white text-lg mt-1">GRAPHIC DESIGNER & VIDEO EDITOR — FREELANCE</h4>
+                        <p class="text-xs text-muted font-space mb-2">Cotonou, Bénin · Remote</p>
+                        <p class="text-xs text-muted font-light">Design graphique · Montage vidéo · Motion Design · AI Creative · Social Media Content (+500 clients accompagnés)</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 reveal">
+                    <h3 class="font-outfit text-xl font-bold text-white mb-6 uppercase">// FORMATION</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="glass-card p-5 rounded-2xl flex justify-between items-center">
+                            <div>
+                                <h4 class="font-outfit font-bold text-white text-base">JESMAR PIGIER — BÉNIN</h4>
+                                <p class="text-xs text-muted">Design Graphique</p>
+                            </div>
+                            <span class="px-2.5 py-1 bg-cardBorder text-offWhite rounded text-[10px] font-space">DIPLÔME</span>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-2xl flex justify-between items-center">
+                            <div>
+                                <h4 class="font-outfit font-bold text-white text-base">FORMATION INTENSIVE EN LIGNE</h4>
+                                <p class="text-xs text-muted">Montage Vidéo & Post-production</p>
+                            </div>
+                            <span class="px-2.5 py-1 bg-cardBorder text-offWhite rounded text-[10px] font-space">CERTIFICATION</span>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-2xl flex justify-between items-center">
+                            <div>
+                                <h4 class="font-outfit font-bold text-white text-base">AUTOFORMATION & PRATIQUE</h4>
+                                <p class="text-xs text-muted">Intelligence Artificielle</p>
+                            </div>
+                            <span class="px-2.5 py-1 bg-cardBorder text-offWhite rounded text-[10px] font-space">EXPERTISE</span>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-2xl flex justify-between items-center">
+                            <div>
+                                <h4 class="font-outfit font-bold text-white text-base">FORMATION & PRATIQUE PERSONNELLE</h4>
+                                <p class="text-xs text-muted">Développement Web</p>
+                            </div>
+                            <span class="px-2.5 py-1 bg-cardBorder text-offWhite rounded text-[10px] font-space">COMPÉTENCE</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-28 px-6 relative z-10 border-t border-cardBorder/40">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="glass-card rounded-3xl p-8 sm:p-16 border-accent/40 text-center relative overflow-hidden reveal">
+                
+                <span class="text-accent font-space text-xs tracking-widest uppercase mb-4 block">// PRENONS CONTACT</span>
+                <h2 class="font-outfit text-4xl sm:text-7xl font-black text-white tracking-tight mb-6">
+                    LET'S CREATE.
+                </h2>
+                
+                <p class="text-muted text-base sm:text-lg max-w-xl mx-auto font-light mb-10">
+                    Vous avez un projet, une marque ou une idée à transformer en contenu visuel ?
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <a href="mailto:charonobody@gmail.com" class="px-8 py-4 bg-accent text-darkBg font-space font-extrabold text-xs tracking-wider uppercase rounded-full hover:bg-white hover:shadow-[0_0_25px_rgba(0,240,255,0.8)] transition-all hover-link flex items-center gap-2">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>EMAIL ME</span>
+                    </a>
+                    <a href="https://wa.me/2290169500371" target="_blank" rel="noopener" class="px-8 py-4 bg-[#25D366] text-darkBg font-space font-extrabold text-xs tracking-wider uppercase rounded-full hover:bg-white hover:shadow-[0_0_25px_rgba(37,211,102,0.8)] transition-all hover-link flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>WHATSAPP</span>
+                    </a>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-6 text-sm font-space text-offWhite pt-6 border-t border-cardBorder/60">
+                    <span><i class="fa-solid fa-envelope text-accent mr-2"></i> charonobody@gmail.com</span>
+                    <span><i class="fa-solid fa-phone text-accent mr-2"></i> +229 01 69 50 03 71</span>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-cardBorder/40 relative z-10 text-center">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-space text-muted">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/40 flex items-center justify-center p-1">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <path d="M20 20 L50 80 L80 20" stroke="#00f0ff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <circle cx="50" cy="32" r="7" fill="#00f0ff"/>
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <p class="text-offWhite font-bold font-outfit">LOKO DEGBO FÉLICIANO CAMILLE</p>
+                    <p class="text-[10px] text-muted">Graphic Designer · Video Editor · AI & Motion Creator</p>
+                </div>
+            </div>
+
+            <div>
+                <p>© 2026 LOKO DEGBO — ALL RIGHTS RESERVED</p>
+                <p class="text-[10px] mt-0.5">Cotonou, Bénin · Available for Remote Projects</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modale de Prévisualisation des Projets -->
+    <div id="project-modal" class="fixed inset-0 z-50 bg-darkBg/90 backdrop-blur-2xl hidden flex items-center justify-center p-4 sm:p-6">
+        <div class="glass-card w-full max-w-3xl rounded-3xl p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto border-accent/40">
+            <button onclick="closeProjectModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-cardBg border border-cardBorder text-white flex items-center justify-center hover:bg-accent hover:text-darkBg transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script>
+        // 1. Carrousel d'arrière-plan Hero (Changement toutes les 5 secondes)
+        const bgSlides = document.querySelectorAll('.bg-slide');
+        let currentSlide = 0;
+
+        function rotateSlideshow() {
+            if (bgSlides.length === 0) return;
+            bgSlides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % bgSlides.length;
+            bgSlides[currentSlide].classList.add('active');
+        }
+
+        setInterval(rotateSlideshow, 5000);
+
+        // 2. Curseur personnalisé
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            if (cursor) {
+                cursor.style.top = `${e.clientY}px`;
+                cursor.style.left = `${e.clientX}px`;
+            }
+        });
+
+        document.querySelectorAll('.hover-project').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                if (cursor) {
+                    cursor.classList.add('hover-project');
+                    cursor.innerText = 'VIEW';
+                }
+            });
+            el.addEventListener('mouseleave', () => {
+                if (cursor) {
+                    cursor.classList.remove('hover-project');
+                    cursor.innerText = '';
+                }
+            });
+        });
+
+        document.querySelectorAll('.hover-link, a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                if (cursor && !cursor.classList.contains('hover-project')) {
+                    cursor.classList.add('hover-link');
+                }
+            });
+            el.addEventListener('mouseleave', () => {
+                if (cursor) {
+                    cursor.classList.remove('hover-link');
+                }
+            });
+        });
+
+        // 3. Navigation Mobile
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+        }
+
+        // 4. Rotateur de Rôle Dynamique
+        const roles = [
+            "GRAPHIC DESIGNER",
+            "VIDEO EDITOR",
+            "AI & MOTION DESIGN CREATOR"
+        ];
+        let roleIndex = 0;
+        const roleRotator = document.getElementById('role-rotator');
+
+        setInterval(() => {
+            if (roleRotator) {
+                roleRotator.style.opacity = '0';
+                roleRotator.style.transform = 'translateY(-10px)';
+                setTimeout(() => {
+                    roleIndex = (roleIndex + 1) % roles.length;
+                    roleRotator.innerText = roles[roleIndex];
+                    roleRotator.style.opacity = '1';
+                    roleRotator.style.transform = 'translateY(0)';
+                }, 300);
+            }
+        }, 3000);
+
+        // 5. Filtres de Galerie Projets
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-accent', 'text-darkBg');
+                    b.classList.add('bg-cardBg', 'text-muted');
+                });
+                btn.classList.add('active', 'bg-accent', 'text-darkBg');
+                btn.classList.remove('bg-cardBg', 'text-muted');
+
+                const filter = btn.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.classList.contains(filter)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 6. Modale de Détails Projets
+        const projectData = {
+            fortune: {
+                title: "Fortune Optique",
+                category: "Brand Identity / Graphic Design",
+                image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=1000&q=80",
+                description: "Création d'une identité visuelle et de supports de communication destinés à renforcer la présence digitale de la marque (Logo, Affiche, Flyers, Visuels réseaux sociaux).",
+                deliverables: ["Charte graphique", "Logo vectoriel", "Flyers & Pubs", "Réseaux Sociaux"]
+            },
+            youtube: {
+                title: "YouTube Content Creation",
+                category: "Video Editing / Storytelling",
+                image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1000&q=80",
+                description: "Montage vidéo axé sur la rétention avec plus de 300 000+ vues générées en 3 mois. Intégration de sous-titres animés, sound design et étalonnage des couleurs.",
+                deliverables: ["300K+ Vues en 3 mois", "20K+ vues par vidéo", "Thumbnails & Shorts", "Editing & Captions"]
+            },
+            motion: {
+                title: "Kinetic Typography & Motion",
+                category: "Motion Design 2D",
+                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=80",
+                description: "Animations typographiques fluides, habillage graphique, animation de logo et effets visuels sous After Effects.",
+                deliverables: ["Kinetic Typography", "Logo Animation", "Transitions custom", "Motion Graphics 2D"]
+            },
+            ai: {
+                title: "AI Creative Workflow",
+                category: "AI Image & Video Generation",
+                image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=1000&q=80",
+                description: "Création visuelle et production de contenus intégrant Midjourney v6, Runway Gen-3, Kling, Veo et ElevenLabs pour des concepts immersifs.",
+                deliverables: ["Génération Images IA", "Animation Vidéo IA", "Voix off synthétique", "Workflow d'intégration"]
+            }
+        };
+
+        function openProjectDetails(key) {
+            const data = projectData[key];
+            if (!data) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <span class="text-xs font-space text-accent uppercase tracking-widest block mb-2">${data.category}</span>
+                <h3 class="font-outfit text-3xl font-extrabold text-white mb-4">${data.title}</h3>
+                <img src="${data.image}" alt="${data.title}" class="w-full h-64 sm:h-80 object-cover rounded-2xl mb-6 border border-cardBorder">
+                <p class="text-offWhite text-sm font-light leading-relaxed mb-6">${data.description}</p>
+                <h4 class="font-space text-xs font-bold text-white mb-3 uppercase tracking-wider">// ÉLÉMENTS DU PROJET :</h4>
+                <ul class="space-y-2 text-xs font-space text-muted mb-8">
+                    ${data.deliverables.map(item => `<li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent"></i> ${item}</li>`).join('')}
+                </ul>
+                <a href="#contact" onclick="closeProjectModal()" class="inline-block px-6 py-3 bg-accent text-darkBg text-xs font-space font-extrabold uppercase tracking-wider rounded-full hover:bg-white transition-colors">
+                    ME CONTACTER POUR UN PROJET
+                </a>
+            `;
+            document.getElementById('project-modal').classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+
+        // 7. Scroll Reveal & Compteurs
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    if (entry.target.querySelector('.counter')) {
+                        startCounters(entry.target);
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function startCounters(container) {
+            container.querySelectorAll('.counter').forEach(counter => {
+                if (counter.classList.contains('done')) return;
+                counter.classList.add('done');
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const speed = target / 40;
+
+                const update = () => {
+                    count += speed;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count);
+                        setTimeout(update, 35);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                update();
+            });
+        }
+    </script>
+</body>
+</html>
